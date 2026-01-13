@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 // PATCH /api/todos/[id]/toggle - Toggle a todo's completion status
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
     // Get user ID from the request headers (set by middleware)
@@ -23,7 +23,7 @@ export async function PATCH(
       );
     }
 
-    const { id } = await params;
+    const { id } = params;
 
     // Toggle the todo completion status
     const updatedTodo = await toggleTodoCompletion(id, userId);
