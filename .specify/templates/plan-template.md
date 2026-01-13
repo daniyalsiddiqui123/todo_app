@@ -31,7 +31,12 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Type Safety & Strict Validation: Verify TypeScript 5.9 with strict mode is configured
+- Test-Driven Development: Confirm testing framework supports 85%+ coverage requirements
+- Zero-Trust Data Isolation: Validate user data access controls and isolation mechanisms
+- Performance-First Architecture: Establish performance monitoring and baseline metrics
+- User-Centric Design: Ensure UI/UX aligns with accessibility and usability standards
+- Progressive Enhancement: Verify core functionality works without JavaScript where applicable
 
 ## Project Structure
 

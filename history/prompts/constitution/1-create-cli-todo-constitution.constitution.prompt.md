@@ -1,15 +1,15 @@
 ---
 id: 1
-title: Create CLI Todo Constitution
+title: Update Todo Web App Constitution
 stage: constitution
-date: 2025-12-31
+date: 2026-01-13
 surface: agent
 model: Claude Sonnet 4.5
 feature: none
-branch: master
+branch: main
 user: Claude Code
 command: sp.constitution
-labels: [constitution, spec-driven-development, cli, python]
+labels: [constitution, spec-driven-development, nextjs, typescript, postgresql, prisma]
 links:
   spec: null
   ticket: null
@@ -17,55 +17,62 @@ links:
   pr: null
 files:
   - .specify/memory/constitution.md
+  - .specify/templates/plan-template.md
+  - .specify/templates/spec-template.md
+  - .specify/templates/tasks-template.md
 tests:
   - none
 ---
 
 ## Prompt
 
-Create a Project Constitution for a Python in-memory CLI Todo app.
+The system shall build a production-ready Todo Web Application using
 
-Rules:
+Next.js 16 App Router with React 19 and TypeScript 5.9.
 
-- Spec-driven development only
 
-- No manual coding
 
-- All changes require updated specs
+The system must:
 
-- Clean architecture & SRP
+- Use Neon PostgreSQL for persistence
 
-- Deterministic, testable behavior
+- Use Prisma 7.2 ORM
 
-- Python 3.13+, UV
+- Use custom JWT authentication
 
-- CLI only, no persistence
+- Support multi-user accounts
 
-Output a clear, enforceable constitution.md.
+- Provide full CRUD for todos
+
+- Use server components, server actions, and route handlers correctly
+
+- Enforce strict data isolation per user
+
+- Be secure, scalable, and SEO-friendly
 
 ## Response snapshot
 
-Created a comprehensive constitution for the CLI Todo App with 6 core principles:
-1. Spec-Driven Development Only
-2. No Manual Coding
-3. Clean Architecture & SRP
-4. Deterministic, Testable Behavior
-5. Python 3.13+ & UV Package Manager
-6. CLI Interface Only, No Persistence
+Updated the project constitution for the Todo Web Application with 6 core principles:
+1. User-Centric Design
+2. Type Safety & Strict Validation
+3. Test-Driven Development (NON-NEGOTIABLE)
+4. Zero-Trust Data Isolation
+5. Performance-First Architecture
+6. Progressive Enhancement
 
-Plus additional constraints, development workflow, and governance sections.
+Plus technology stack requirements, security & privacy standards, development workflow, and governance sections. Also updated dependent templates to align with the constitution.
 
 ## Outcome
 
-- ✅ Impact: Created initial project constitution with all required principles
+- ✅ Impact: Updated project constitution with all required principles aligned to Next.js/TypeScript/PostgreSQL/Prisma stack
 - 🧪 Tests: none
-- 📁 Files: Updated .specify/memory/constitution.md with comprehensive constitution
-- 🔁 Next prompts: Plan and implement CLI Todo app features based on constitution
-- 🧠 Reflection: Constitution provides clear guidelines for future development
+- 📁 Files: Updated .specify/memory/constitution.md and template files to maintain consistency
+- 🔁 Next prompts: Plan and implement Todo web app features based on updated constitution
+- 🧠 Reflection: Constitution and templates now consistently aligned with specified tech stack and security requirements
 
 ## Evaluation notes (flywheel)
 
 - Failure modes observed: none
 - Graders run and results (PASS/FAIL): N/A
 - Prompt variant (if applicable): N/A
-- Next experiment (smallest change to try): Begin spec creation for CLI Todo app
+- Next experiment (smallest change to try): Begin spec creation for Todo web application

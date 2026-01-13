@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- TypeScript 5.9 with strict mode enabled + Next.js 16 with App Router, React 19, Tailwind CSS 4, Prisma 7.2, Neon PostgreSQL driver (001-multi-user-todo)
+- Neon PostgreSQL database with Prisma 7.2 ORM for data access and migrations (001-multi-user-todo)
+
+## Recent Changes
+- 001-multi-user-todo: Added TypeScript 5.9 with strict mode enabled + Next.js 16 with App Router, React 19, Tailwind CSS 4, Prisma 7.2, Neon PostgreSQL driver
