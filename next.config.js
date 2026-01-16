@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    typedRoutes: true, // enabling typed routes for Next.js 16
-  },
+  typedRoutes: true, // enabling typed routes for Next.js 16
   images: {
     remotePatterns: [
       {
@@ -16,7 +14,6 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  swcMinify: true,
 };
 
 export default nextConfig;

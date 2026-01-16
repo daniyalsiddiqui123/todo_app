@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const TOKEN_COOKIE_NAME = 'auth_token';
 
-export function setAuthCookie(token: string, res?: NextResponse): void {
+export async function setAuthCookie(token: string, res?: NextResponse): Promise<void> {
   const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -15,20 +15,23 @@ export function setAuthCookie(token: string, res?: NextResponse): void {
   if (res) {
     res.cookies.set(TOKEN_COOKIE_NAME, token, cookieOptions);
   } else {
-    cookies().set(TOKEN_COOKIE_NAME, token, cookieOptions);
+    // For Next.js 16, cookies() returns a Promise
+    const cookieStore = await cookies();
+    cookieStore.set(TOKEN_COOKIE_NAME, token, cookieOptions);
   }
 }
 
-export function getAuthCookie(req?: NextRequest): string | undefined {
+export async function getAuthCookie(req?: NextRequest): Promise<string | undefined> {
   if (req) {
     const tokenCookie = req.cookies.get(TOKEN_COOKIE_NAME);
     return tokenCookie?.value;
   }
 
-  return cookies().get(TOKEN_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  return cookieStore.get(TOKEN_COOKIE_NAME)?.value;
 }
 
-export function clearAuthCookie(res?: NextResponse): void {
+export async function clearAuthCookie(res?: NextResponse): Promise<void> {
   const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -40,6 +43,7 @@ export function clearAuthCookie(res?: NextResponse): void {
   if (res) {
     res.cookies.set(TOKEN_COOKIE_NAME, '', cookieOptions);
   } else {
-    cookies().set(TOKEN_COOKIE_NAME, '', cookieOptions);
+    const cookieStore = await cookies();
+    cookieStore.set(TOKEN_COOKIE_NAME, '', cookieOptions);
   }
 }
