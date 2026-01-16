@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from './lib/auth/jwt';
 import { getAuthCookie } from './lib/auth/cookies.server';
 
-export async function middleware(request: NextRequest) {
-  // Define public routes that don't require authentication
-  const publicRoutes = ['/', '/auth/login', '/auth/register'];
-  const publicApiRoutes = ['/api/auth/login', '/api/auth/register'];
+// Define public routes that don't require authentication
+const publicRoutes = ['/', '/auth/login', '/auth/register'];
+const publicApiRoutes = ['/api/auth/login', '/api/auth/register'];
 
+export async function middleware(request: NextRequest) {
   // Check if the current route is public
   const isPublicRoute = publicRoutes.some(route =>
     request.nextUrl.pathname === route || request.nextUrl.pathname.startsWith(`${route}/`)
@@ -22,14 +22,14 @@ export async function middleware(request: NextRequest) {
   }
 
   // For protected routes, check for authentication token
-  const token = getAuthCookie(request);
+  const token = await getAuthCookie(request);
 
   if (!token) {
     // Return 401 for API routes
     if (request.nextUrl.pathname.startsWith('/api/')) {
-      return new NextResponse(
-        JSON.stringify({ success: false, error: 'Authentication required' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
+      return NextResponse.json(
+        { success: false, error: 'Authentication required' },
+        { status: 401 }
       );
     }
 
@@ -58,9 +58,9 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     // If token is invalid, return 401 for API routes
     if (request.nextUrl.pathname.startsWith('/api/')) {
-      return new NextResponse(
-        JSON.stringify({ success: false, error: 'Invalid authentication token' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
+      return NextResponse.json(
+        { success: false, error: 'Invalid authentication token' },
+        { status: 401 }
       );
     }
 
